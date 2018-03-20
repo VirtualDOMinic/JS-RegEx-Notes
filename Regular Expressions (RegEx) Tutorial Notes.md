@@ -48,9 +48,9 @@ Let's create a RegEx that looks for the word "ninja":
 ```
 The above regex would match "ninja" on its own, regardless of whether any other characters appear before or after the word. It will only match the first instance of "ninja" that it comes across, too. To see this in action, you can type in your own examples in the "test string" field on RegEx101.
 
-### Flags
+### A couple of flags
 #### Global
-To match all instances of the word ninja that appear, we need to add the global flag. On RegEx101, you can selectthis at the right hand side of the RegEx input field. In javascript, it would look like the following: 
+To match all instances of the word ninja that appear, we need to add the global flag. On RegEx101, you can select this at the right hand side of the RegEx input field. In javascript, it would look like the following: 
 ```javascript
 /ninja/g
 ```
@@ -60,6 +60,20 @@ The RegEx above will now match every instance of the word "ninja", but it's case
 ```javascript
 /ninja/gi
 ```
+
+### Bonus: RegEx in use (INCOMPLETE)
+There are plenty of "production" examples to come, but if you're impatient, here's an example of the RegEx we've used so far in use in a function:
+```javascript
+function count(string,char) {
+ var re = new RegExp(char,"gi");
+ return string.match(re).length;
+}
+
+var str = 'I will practice survival skills';
+console.log(count(str,'i'));
+```
+Thanks to Dave McFarland from the Team Treehouse forums for the code snippet above ([source](https://teamtreehouse.com/community/how-to-count-the-number-of-times-a-specific-character-appears-in-a-string))
+I will be updating (and adapting) the above to explain it in more detail. More TBD in the following chapters, too.
 
 
 
