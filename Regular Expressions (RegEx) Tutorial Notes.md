@@ -63,7 +63,7 @@ The RegEx above will now match every instance of the word "ninja", but it's case
 
 ### Other flags, to be covered in more detail in an update
 | Flag | Description                     |
-|:----:|:-------------------------------:|
+|:----:| ------------------------------- |
 | m    | Multiline: match the beginning and end of each line, not just the beginning/end of the whole input. |
 | u    | Unicode: treat the pattern as a sequence of Unicode code points |
 | y    | Sticky: TBD |
