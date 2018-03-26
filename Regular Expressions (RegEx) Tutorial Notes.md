@@ -61,6 +61,14 @@ The RegEx above will now match every instance of the word "ninja", but it's case
 /ninja/gi
 ```
 
+### Other flags, to be covered in more detail in an update
+| Flag | Description                     |
+|:----:|:-------------------------------:|
+| m    | Multiline: match the beginning and end of each line, not just the beginning/end of the whole input. |
+| u    | Unicode: treat the pattern as a sequence of Unicode code points |
+| y    | Sticky: TBD |
+
+
 ### Bonus: RegEx in use (INCOMPLETE)
 There are plenty of "production" examples to come, but if you're impatient, here's an example of the RegEx we've used so far in use in a function:
 ```javascript
