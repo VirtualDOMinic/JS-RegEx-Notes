@@ -21,7 +21,7 @@ These notes are my interpretation of the video tutorials, and the plan is to fle
 16. "Finishing touches"
 
 ## 1. Intro: What Is RegEx?
-Regular expressions (RegEx or RegExp for short) allow us to check a series of characters for matches. One example of when this can be useful is in form input validation: e.g. checking the email address that a user has entered contains an "@" sign and ends with a valid TLD (.com, .org...)
+Regular expressions (RegEx or RegExp for short) are objects that allow us to check a series of characters for matches. One example of when this can be useful is in form input validation: e.g. checking the email address that a user has entered contains an "@" sign and ends with a valid TLD (.com, .org...)
 RegEx is something that many developers might not be too comfortable with, and may try to avoid. It's useful, powerful, and we can definitely get to grips with it :).
 
 Further down, we will work on creating a feedback form with input validation. Relevant files will be added to this repo.
@@ -68,9 +68,24 @@ The RegEx above will now match every instance of the word "ninja", but it's case
 | u    | Unicode: treat the pattern as a sequence of Unicode code points |
 | y    | Sticky: TBD |
 
+### Bonus: RegEx object literals vs constructors (INCOMPLETE)
+This will be revisited in more detail, but to understand the example below, it's useful to know the difference between a RegEx literal and a RegEx constructor.
+
+#### RegEx literals
+The above examples, where the expression (pattern) is placed between forward slashes, and the flags (modifiers) come directly after, are RegEx literals. [According to MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp), the literal notation is compiled when the expression is evaluated, and won't be recompiled, e.g.  if you have a loop where the RegEx is supposed to change on each iteration, a literal isn't appropriate. Conversely, if you know the RegEx will be static, using a literal can have performance benefits over an object.
+```javascript
+var domRegEx = /dom/gm;
+```
+
+#### RegEx ("RegExp") constructors
+Constructors (used in the bonus example below) use quotation marks instead of forward slashes as the delimiter, and the flags appear as a second, optional, argument, also in quotation marks:
+```javascript
+var domRegEx = new RegExp("dom", "gm");
+```
+
 
 ### Bonus: RegEx in use (INCOMPLETE)
-There are plenty of "production" examples to come, but if you're impatient, here's an example of the RegEx we've used so far in use in a function:
+There are plenty of "production" examples to come, but - to whet your appetite - here's an example of the RegEx we've used so far in use in a function:
 ```javascript
 function count(string,char) {
  var re = new RegExp(char,"gi");
@@ -80,6 +95,8 @@ function count(string,char) {
 var str = 'I will practice survival skills';
 console.log(count(str,'i'));
 ```
+In brief, the above function takes a string (in this case "I will practice survival skills" as the variable "str", and does a case-insensitive count of the number of times a character (in this case "i") appears in the string.
+
 Thanks to Dave McFarland from the Team Treehouse forums for the code snippet above ([source](https://teamtreehouse.com/community/how-to-count-the-number-of-times-a-specific-character-appears-in-a-string))
 I will be updating (and adapting) the above to explain it in more detail. More TBD in the following chapters, too.
 
