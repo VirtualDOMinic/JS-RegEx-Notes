@@ -68,7 +68,7 @@ The RegEx above will now match every instance of the word "ninja", but it's case
 | u    | Unicode: treat the pattern as a sequence of Unicode code points |
 | y    | Sticky: TBD |
 
-### Bonus: RegEx object literals vs constructors (INCOMPLETE)
+### Bonus: RegEx object literals vs constructors
 This will be revisited in more detail, but to understand the example below, it's useful to know the difference between a RegEx literal and a RegEx constructor.
 
 #### RegEx literals
@@ -84,7 +84,7 @@ var domRegEx = new RegExp("dom", "gm");
 ```
 
 
-### Bonus: RegEx in use (INCOMPLETE)
+### Bonus: RegEx in use
 There are plenty of "production" examples to come, but - to whet your appetite - here's an example of the RegEx we've used so far in use in a function:
 ```javascript
 function count(string,char) {
@@ -97,7 +97,7 @@ console.log(count(str,'i'));
 ```
 In brief, the above function takes a string (in this case "I will practice survival skills" as the variable "str", and does a case-insensitive count of the number of times a character (in this case "i") appears in the string.
 
-Thanks to Dave McFarland from the Team Treehouse forums for the code snippet above ([source](https://teamtreehouse.com/community/how-to-count-the-number-of-times-a-specific-character-appears-in-a-string))
+Thanks to Dave McFarland from the Team Treehouse forums for the code snippet above ([source](https://teamtreehouse.com/community/how-to-count-the-number-of-times-a-specific-character-appears-in-a-string)).
 I will be updating (and adapting) the above to explain it in more detail. More TBD in the following chapters, too.
 
 
