@@ -100,5 +100,5 @@ In brief, the above function takes a string (in this case "I will practice survi
 Thanks to Dave McFarland from the Team Treehouse forums for the code snippet above ([source](https://teamtreehouse.com/community/how-to-count-the-number-of-times-a-specific-character-appears-in-a-string)).
 I will be updating (and adapting) the above to explain it in more detail. More TBD in the following chapters, too.
 
-
+## 3. Character sets
 
