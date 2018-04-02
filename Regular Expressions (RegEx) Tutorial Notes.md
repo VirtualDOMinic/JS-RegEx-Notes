@@ -107,4 +107,10 @@ I will be updating (and adapting) the above to explain it in more detail. More T
 RegEx is much more than just a tool to find specific words (e.g. "ninja"). We may want to match a variety of different characters in the same position, for example. We can do this with character sets.
 
 ### Creating a character set
-To create a character set, we need to use \[square brackets]
+To create a character set, we need to use \[square brackets].
+
+E.g. if we wanted a regex pattern to match either "ninja" or "ginja", we could use the following RegEx:
+```javascript
+/[ng]inja/;
+```
+The above would match "ninja" or "ginja", but not "binja" or "winja", for example.
