@@ -82,6 +82,7 @@ Constructors (used in the bonus example below) use quotation marks instead of fo
 ```javascript
 var domRegEx = new RegExp("dom", "gm");
 ```
+Constructors are required if you want to dynamically assemble a regular expression, as they are compiled when called (i.e. at runtime) rather than at load time (see "Literal Versus Constructor" [here](https://www.safaribooksonline.com/library/view/speaking-javascript/9781449365028/ch19.html)).
 
 
 ### Bonus: RegEx in use
