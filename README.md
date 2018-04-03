@@ -1,7 +1,7 @@
 # JS-RegEx-Notes
 Notes taken about Regular Expressions (specific to JavaScript)
 
-### [Notes here (WIP)](Regular Expressions (RegEx) Tutorial Notes.md)
+### [Notes here (WIP)](Regular%20Expressions%20(RegEx)%20Tutorial%20Notes.md)
 
 ## Plan
 1. Give a shout-out to (and user guide for) [regex101](https://regex101.com) 
