@@ -6,7 +6,7 @@ These notes are my interpretation of the video tutorials, and the plan is to fle
 This is currently a draft, with plenty of "bonuses", notes and "previews". Once all 16 videos have been written up, I will be improving the ordering of the below write-up.
 
 ## Contents
-1. [Intro: "what is RegEx?"](1.-Intro:-What-Is-RegEx?)
+1. [Intro: "what is RegEx?"](#1.-Intro:-What-Is-RegEx?)
 2. Simple RegEx patterns
 3. Character sets
 4. Ranges
