@@ -2,8 +2,11 @@
 Notes taken from the 16-part YouTube [Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9g6m_6Sld9Q4jzqdqHd2HiD) on RegEx by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg). Please do check out his channel. The content I've watched so far has been really well-explained.
 These notes are my interpretation of the video tutorials, and the plan is to flesh out these notes with information and examples from other resources (e.g. MDN, freeCodeCamp, etc.)
 
+## Author note
+This is currently a draft, with plenty of "bonuses", notes and "previews". Once all 16 videos have been written up, I will be improving the ordering of the below write-up.
+
 ## Contents
-1. Intro: "what is RegEx?"
+1. [Intro: "what is RegEx?"](1.-Intro:-What-Is-RegEx?)
 2. Simple RegEx patterns
 3. Character sets
 4. Ranges
@@ -115,3 +118,22 @@ E.g. if we wanted a regex pattern to match either "ninja" or "ginja", we could u
 /[ng]inja/;
 ```
 The above would match "ninja" or "ginja", but not "binja" or "winja", for example.
+
+If we wanted to match 1000, 2000, 3000 and 4000, but nothing else, we could use:
+```javascript
+/[1234]000/;
+```
+
+#### Bonus: ranges & quantifiers (preview)
+Character sets support ranges, signified by a dash, e.g. ```[1-4]``` for the numbers 1 to 4 or ```[a-z]``` for all the letters in the alphabet (lower-case only).
+
+So, for the previous example, we could do the following instead:
+```javascript
+/[1-4]000/;
+```
+
+...and we could even add the "zero or one" quantifier, ```?``` to not only match 1000, 2000, 3000, 4000, but also allow for a comma before the thousands separator (AKA the comma), e.g. "2,000":
+```javascript
+/[1-4],?000/;
+```
+
