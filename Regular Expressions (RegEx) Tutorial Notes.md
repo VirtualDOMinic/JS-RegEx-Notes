@@ -1,5 +1,5 @@
 # Regular Expressions (RegEx) Tutorial
-Notes taken from the 16-part YouTube [Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9g6m_6Sld9Q4jzqdqHd2HiD) on RegEx by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg). Please do check out his channel. The content I've watched so far has been really well-explained.
+Notes taken from the 16-part YouTube [Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9g6m_6Sld9Q4jzqdqHd2HiD) on RegEx by [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg). Please do check out his channel. This is a good introduction to JS RegEx, and involves a nice, working example.
 These notes are my interpretation of the video tutorials, and the plan is to flesh out these notes with information and examples from other resources (e.g. MDN, freeCodeCamp, etc.)
 
 ## Author note
@@ -132,8 +132,49 @@ So, for the previous example, we could do the following instead:
 /[1-4]000/;
 ```
 
-...and we could even add the "zero or one" quantifier, ```?``` to not only match 1000, 2000, 3000, 4000, but also allow for a comma before the thousands separator (AKA the comma), e.g. "2,000":
+...and we could even add the "zero or one" quantifier, ```?``` to a comma in order to not only match 1000, 2000, 3000, 4000, but also allow for a comma before the thousands separator (AKA the comma), e.g. "2,000":
 ```javascript
 /[1-4],?000/;
 ```
+
+### Exclusion sets (negated character sets)
+To match all of the thousands (from 1000 to 9000) except for "5000" and "6000", we *could* use the regex ```[1234789]000``` or ```[1-47-9]000```, but there's a more efficient solution: the caret ```^```.
+
+When used at the start of a character set (immediately after the opening square bracket), a caret (^) signifies that we want to match anything *except* for what's in the character set, so we could do the following to get the same result as above:
+```javascript
+/[^56]000/;
+```
+However, this would also match "a000" or "0000", for example, as "a" and "0" are not 5 or 6. To avoid this issue, we could add all non-digit characters to the exclusion set with the metacharacter ```\D```, and add "0", too:
+```javascript
+/[^56\D0]000/;
+```
+
+## 4. Ranges (continued)
+To match any five letter word ending with "inja", we could use the regex ```/[a-z]inja/```, where "a-z" is the range denoting all lower-case letters from 'a' to 'z'. This range could be made to match only 'c' to 'm' as the first character by using ```/[c-m]inja/```. Be aware that your range must go from first to last (or low to high), so ```/[m-c]inja/``` would result in an error, for example.
+
+To match any five letter word ending with "inja" (as above) but also allow the first letter to be upper-case, you can use two ranges in the character set: ```/[a-zA-Z]inja/```. Using in case-insensitive flag "i" would also work ```/[a-z]inja/i```, but this would make the entire RegEx case insensitive, meaning it would match "FINGA", "ninjA", etc.
+
+#### Example: matching a UK phone number 
+See below for a basic example of using ranges to match something like a UK telephone number (11 digits, 0-9):
+```javascript
+/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/;
+```
+"Surely there must be a better way to do this??" you ask! See below.
+
+## 5. Repeating characters (quantifiers)
+We can use quantifiers to match a target character/set a particular number of times. For example, ```?``` I used here ```/[1-4],?000/;``` is a quantifier that looks for 0 or 1 of the specified character.
+
+The ```+``` quantifier matches between one and unlimited repetitions of the target character, e.g. ```/[0-9]+/``` would match a number of any length.
+
+In order to specify the exact number of repetitions to match, we can use curly braces ```{}```, and can therefore match any 11 digit number, while avoiding matches for numbers of any other length, like so: 
+```javascript
+/[0-9]{11}/;
+```
+
+Curly braces also accept a length range in the format ```{min,max}```, so to match any number between 11 and 13 digits long, add a comma (no spaces!) after the 11 and add a 13 to get ```/[0-9]{11,13}/```.
+
+#### Bonus: lazy vs greedy
+By default, the length/repetition range in curly braces is *greedy*. This means that it will match as many characters as possible. As an example, ```/[0-9]{2,5}/``` would match the entirety of "12345" or "99999" rather than just the "12" or "99". In order to make this "lazy" (match as few as possible, in this case two), use a question mark ```?``` immediately after the curly braces, like so: ```/[0-9]{2,5}?/```.
+
+## 6. Metacharacters
 
