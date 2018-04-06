@@ -6,7 +6,7 @@ These notes are my interpretation of the video tutorials, and the plan is to fle
 This is currently a draft, with plenty of "bonuses", notes and "previews". Once all 16 videos have been written up, I will be improving the ordering of the below write-up.
 
 ## Contents
-1. [Intro: "what is RegEx?"](#1.-Intro:-What-Is-RegEx?)
+1. [Intro: "what is RegEx?"](#1%2E-Intro%3A-What-Is-RegEx?)
 2. Simple RegEx patterns
 3. Character sets
 4. Ranges
@@ -162,7 +162,7 @@ See below for a basic example of using ranges to match something like a UK telep
 "Surely there must be a better way to do this??" you ask! See below.
 
 ## 5. Repeating characters (quantifiers)
-We can use quantifiers to match a target character/set a particular number of times. For example, ```?``` I used here ```/[1-4],?000/;``` is a quantifier that looks for 0 or 1 of the specified character.
+We can use quantifiers to match a target set or character a particular number of times. For example, ```?``` I used here ```/[1-4],?000/;``` is a quantifier that looks for 0 or 1 of the specified character.
 
 The ```+``` quantifier matches between one and unlimited repetitions of the target character, e.g. ```/[0-9]+/``` would match a number of any length.
 
@@ -171,10 +171,33 @@ In order to specify the exact number of repetitions to match, we can use curly b
 /[0-9]{11}/;
 ```
 
-Curly braces also accept a length range in the format ```{min,max}```, so to match any number between 11 and 13 digits long, add a comma (no spaces!) after the 11 and add a 13 to get ```/[0-9]{11,13}/```.
+Curly braces also accept a length range in the format ```{min,max}```, so to match any number from 11 to 13 digits long, add a comma (no spaces!) after the 11 and add a 13 to get ```/[0-9]{11,13}/```.
 
 #### Bonus: lazy vs greedy
-By default, the length/repetition range in curly braces is *greedy*. This means that it will match as many characters as possible. As an example, ```/[0-9]{2,5}/``` would match the entirety of "12345" or "99999" rather than just the "12" or "99". In order to make this "lazy" (match as few as possible, in this case two), use a question mark ```?``` immediately after the curly braces, like so: ```/[0-9]{2,5}?/```.
+By default, the length/repetition range in curly braces is *greedy*. This means that it will match as many characters as possible. As an example, ```/[0-9]{2,5}/``` would match the entirety of "12345" or "99999" rather than just the "12" or "99". In order to make this "lazy" (match as few as possible, in this case two), use a question mark ```?``` immediately after the curly braces, like so: 
+```javascript
+/[0-9]{2,5}?/
+```
 
-## 6. Metacharacters
+## 6. Metacharacters/character classes
+Metacharacters are preceded by a back slash ```\```. The below table contains a few examples of these, and you can find a more comprehensive list on [w3shools](https://www.w3schools.com/jsref/jsref_obj_regexp.asp).
+| Metacharacter | Description (match)                |
+|:----:| ------------------------------- |
+| \\d    | Any digit (same as [0-9]) |
+| \\D    | Any non-digit character |
+| \\w    | Any "word character" (a-z, A-Z, 0-9 and underscores ```_```) |
+| \\W    | Any non-word character |
+| \\s    | Any whitespace character (spaces, tabs, newline...)|
+| \\S    | Any non-whitespace character |
+| \\t    | A tab character only |
 
+#### Bonus: escaping
+Note: There's a good chapter on this on (in?) [javascript.info](https://javascript.info/regexp-escaping).
+
+How, then, if ```/\d/``` matches any digit, could we create a RegEx for "\\d" itself?
+The backslash ```\``` can either be used to denote a character set (like with the examples in the table), or to escape a special character so that it can be matched literally. 
+
+The special characters, which need to be escaped with a ```\``` are: ```[ \ ^ $ . | ? * + ( )```. So, to match "\\d" literally, our regex would be as follows:
+```javascript
+/\\d/
+```
