@@ -181,6 +181,7 @@ By default, the length/repetition range in curly braces is *greedy*. This means 
 
 ## 6. Metacharacters/character classes
 Metacharacters are preceded by a back slash ```\```. The below table contains a few examples of these, and you can find a more comprehensive list on [w3shools](https://www.w3schools.com/jsref/jsref_obj_regexp.asp).
+
 | Metacharacter | Description (match)                |
 |:----:| ------------------------------- |
 | \\d    | Any digit (same as [0-9]) |
