@@ -186,11 +186,16 @@ Metacharacters are preceded by a back slash ```\```. The below table contains a 
 |:----:| ------------------------------- |
 | \\d    | Any digit (same as [0-9]) |
 | \\D    | Any non-digit character |
-| \\w    | Any "word character" (a-z, A-Z, 0-9 and underscores ```_```) |
+| \\w    | Any "word character" (a-z, A-Z, 0-9 and underscores ```_```, same as [a-zA-Z0-9_]) |
 | \\W    | Any non-word character |
 | \\s    | Any whitespace character (spaces, tabs, newline...)|
 | \\S    | Any non-whitespace character |
 | \\t    | A tab character only |
+
+As an example, the RegEx ```/\d\s\w/``` would match any digit-whitespace-"word character" combination, e.g. "4 p". For a slightly more complex example, the following RegEx would match any combination of 3 number characters, 2 characters of whitespace, and 1 word character (e.g. "123  w" or "555  _"):
+```javascript
+/\d{3}\s{2}\w/
+```
 
 #### Bonus: escaping
 Note: There's a good chapter on this on (in?) [javascript.info](https://javascript.info/regexp-escaping).
@@ -198,7 +203,8 @@ Note: There's a good chapter on this on (in?) [javascript.info](https://javascri
 How, then, if ```/\d/``` matches any digit, could we create a RegEx for "\\d" itself?
 The backslash ```\``` can either be used to denote a character set (like with the examples in the table), or to escape a special character so that it can be matched literally. 
 
-The special characters, which need to be escaped with a ```\``` are: ```[ \ ^ $ . | ? * + ( )```. So, to match "\\d" literally, our regex would be as follows:
+The special characters which need to be escaped with a ```\``` are: ```[ \ ^ $ . | ? * + ( )```. So, to match "\\d" literally, our regex would be as follows:
 ```javascript
 /\\d/
 ```
+
