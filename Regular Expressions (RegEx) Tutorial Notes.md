@@ -259,9 +259,14 @@ The special characters which need to be escaped with a `\` are: `[ \ ^ $ . | ? *
 
 Here, we'll be (re)introduced to additional special RegEx characters. Several of these have already been used in the previous sections:
 
-| Char | Description                                                      |  Example   | Desc of Example                             |
-| :--: | ---------------------------------------------------------------- | :--------: | ------------------------------------------- |
-|  +   | "One or more" quantifier                                         |   `/e+/`   | matches the letter "e" one or more times    |
-|  \   | Escape character: escapes the character immediately following it |  `/\\\+/`  | matches "\+" literally                      |
-|  []  | Character set                                                    | `/[aex]/`  | matches any of "a", "e" or "x"              |
-| [^]  | Negate symbol (^) in a character set ([])                        | `/[^aex]/` | matches anything other than "a", "e" or "x" |
+| Char | Description                                                      |  Example   | Desc of Example                                                       |
+| :--: | ---------------------------------------------------------------- | :--------: | --------------------------------------------------------------------- |
+|  +   | "One or more" quantifier                                         |   `/e+/`   | matches the letter "e" one or more times                              |
+|  \   | Escape character: escapes the character immediately following it |  `/\\\+/`  | matches "\\+" literally                                               |
+|  []  | Character set                                                    | `/[aex]/`  | matches any of "a", "e" or "x"                                        |
+| [^]  | Negate symbol (^) in a character set ([])                        | `/[^aex]/` | matches any char other than "a", "e" or "x"                           |
+|  ?   | "Zero or one" quantifier: makes preceding char optional          |  `/abc?/`  | matches "ab" or "abc"                                                 |
+|  .   | Matches any character (except for newline)                       |  `/.{3}/`  | matches 3 in-a-row of any non-newline character (" . ", "111", "abc") |
+|  \*  | "Zero or more" quantifier                                        |  `/ab*/`   | matches "a", "ab" or "abbbbbbb"                                       |
+
+## 8. Starting & ending patterns
