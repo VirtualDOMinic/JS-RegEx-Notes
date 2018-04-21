@@ -269,4 +269,14 @@ Here, we'll be (re)introduced to additional special RegEx characters. Several of
 |  .   | Matches any character (except for newline)                       |  `/.{3}/`  | matches 3 in-a-row of any non-newline character (" . ", "111", "abc") |
 |  \*  | "Zero or more" quantifier                                        |  `/ab*/`   | matches "a", "ab" or "abbbbbbb"                                       |
 
-## 8. Starting & ending patterns
+## 8. Starting & ending patterns (anchors)
+
+Example: imagine we have a form on a webpage that requires a five-letter (no more, no less) word in a form. We could do `/[A-Za-z]{5}/` to match words of five letters, e.g. "hello", "await"... The issue is that this RegEx would still match the first five letters of "hellogoodbye", "aabbcc", etc.
+
+To get around this, we can tell our RegEx to match the start and end of text with a caret `^` and dollar sign `$` respectively. This then allows us to look at the whole string. E.g. for the above example, we can update the RegEx to be `/^[A-Za-z]{5}$/` and this will match "hello" and "await", but not "hellogoodbye" or "aabbcc" because there aren't exactly five letters spanning from the very start to the very end of the string.
+
+To match an empty string, we could therefore use the following RegEx: `/^$/`.
+
+Note: the caret means "not" when used at the start of a character set (see "Exclusion sets (negated character sets)" in section 3 of these notes), but denotes the start of a string when used outside of a character set.
+
+## 9. Alternate characters
