@@ -273,10 +273,12 @@ Here, we'll be (re)introduced to additional special RegEx characters. Several of
 
 Example: imagine we have a form on a webpage that requires a five-letter (no more, no less) word in a form. We could do `/[A-Za-z]{5}/` to match words of five letters, e.g. "hello", "await"... The issue is that this RegEx would still match the first five letters of "hellogoodbye", "aabbcc", etc.
 
-To get around this, we can tell our RegEx to match the start and end of text with a caret `^` and dollar sign `$` respectively. This then allows us to look at the whole string. E.g. for the above example, we can update the RegEx to be `/^[A-Za-z]{5}$/` and this will match "hello" and "await", but not "hellogoodbye" or "aabbcc" because there aren't exactly five letters spanning from the very start to the very end of the string.
+To get around this, we can tell our RegEx to match the start and end of text with a caret `^` and dollar sign `$` respectively. This then allows us to look at whether the string as a whole is a match. E.g. for the above example, we can update the RegEx to be `/^[A-Za-z]{5}$/` and this will match "hello" and "await", but not "hellogoodbye" or "aabbcc" because there aren't exactly five letters spanning from the very start to the very end of the string.
 
 To match an empty string, we could therefore use the following RegEx: `/^$/`.
 
 Note: the caret means "not" when used at the start of a character set (see "Exclusion sets (negated character sets)" in section 3 of these notes), but denotes the start of a string when used outside of a character set.
 
 ## 9. Alternate characters
+
+Use of a single pipe `|` denotes "or":
