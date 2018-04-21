@@ -281,4 +281,10 @@ Note: the caret means "not" when used at the start of a character set (see "Excl
 
 ## 9. Alternate characters
 
-Use of a single pipe `|` denotes "or":
+Use of a single pipe `|` denotes "or" in RegEx. No need to use the double pipe `||`.
+
+E.g. to match "lover" and "fighter", we could enclose "lov" and "fight" in a capturing group `()`, seperated by `|`, and followed by "er": `/(lov|fight)er/`.
+
+E.g. to match "pet rabbit", "toy rabbit" or "cool rabbit" with a single RegEx, we could use: `/(pet|toy|cool) rabbit/`.
+
+## 10. Creating a form (start of "code tour")
